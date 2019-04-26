@@ -1,14 +1,20 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import { MDXProvider } from '@mdx-js/react'
 
 import Header from './header'
 
+function Anchor(props) {
+  const p = Object.assign({}, props)
+  p.to = `${props.href}#123`
+  return <Link {...p} />
+}
+
 export default ({ data }) => (
-  <MDXProvider components={{}}>
+  <MDXProvider components={{ a: Anchor }}>
     <Header siteTitle={data.site.siteMetadata.title} />
-    <MDXRenderer>{data.mdx.code.body}</MDXRenderer>
+    <MDXRenderer components={{ a: Anchor }}>{data.mdx.code.body}</MDXRenderer>
   </MDXProvider>
 )
 

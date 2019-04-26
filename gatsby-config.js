@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Gatsby Default Starter',
   },
+  pathPrefix: `/foobar`,
   plugins: [
     {
       resolve: 'gatsby-mdx',
